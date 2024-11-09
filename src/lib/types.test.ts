@@ -1,7 +1,7 @@
 import { ParkType } from "./fetcher";
-import { getLink } from "./types";
-import { Link } from "./types";
 import { describe, expect, it } from "vitest";
+import { Link } from "./link";
+import { getLink } from "./link";
 
 describe("getLink", () => {
   it("getLink for tdl", () => {
