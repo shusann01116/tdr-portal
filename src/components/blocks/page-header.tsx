@@ -10,7 +10,7 @@ const poiret = Poiret_One({
 
 export default function PageHeader() {
   return (
-    <header className="flex justify-center bg-background/50 px-4 py-1 backdrop-blur-lg">
+    <header className="flex justify-center bg-background/50 px-4 py-2 backdrop-blur-lg">
       <span className="w-full max-w-screen-lg">
         <Link href="/" className={cn(poiret.className, "text-4xl font-bold")}>
           Disney Portal
