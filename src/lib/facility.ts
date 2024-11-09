@@ -6,8 +6,8 @@ export function toFacilityRespFromAttraction(f: Facility): FacilityResp {
     id: f.FacilityID,
     name: f.FacilityName,
     operatingStatus: {
-      id: f.OperatingStatusCD ?? "",
-      name: f.OperatingStatus ?? "",
+      id: f.OperatingStatusCD ?? f.FacilityStatusCD ?? "",
+      name: f.OperatingStatus ?? f.FacilityStatus ?? "",
     },
     operatingHour: {
       from: new Date(`${f.OperatingHoursFromDate} ${f.OperatingHoursFrom}:00`),
