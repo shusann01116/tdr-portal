@@ -1,7 +1,7 @@
 "use client";
 
 import { StandbyCard } from "@/components/ui/standby-card";
-import { getArea } from "@/lib/attractions";
+import { areaList, getAreaByFacilityId } from "@/lib/area";
 import { FacilityResp } from "@/lib/fetcher";
 import { useState } from "react";
 
@@ -22,19 +22,27 @@ export default function StandbyByArea({ standbyList }: Props) {
 
   const groupedByArea = standbyList.reduce(
     (acc, facility) => {
-      acc[getArea(facility.id)] = acc[getArea(facility.id)] || [];
-      acc[getArea(facility.id)].push(facility);
+      const area = getAreaByFacilityId(facility.id) ?? {
+        AreaID: "9999",
+        AreaName: "その他",
+      };
+
+      acc[area.AreaID] = acc[area.AreaID] || [];
+      acc[area.AreaID].push(facility);
       return acc;
     },
     {} as Record<string, FacilityResp[]>,
   );
 
   return (
-    <>
-      {Object.entries(groupedByArea).map(([areaName, facilities]) => (
-        <div key={areaName} className="space-y-4">
-          <h2 className="text-2xl font-bold">{areaName}</h2>
-          <ul className="space-y-4">
+    <div className="space-y-6">
+      {Object.entries(groupedByArea).map(([areaId, facilities]) => (
+        <div key={areaId} className="w-full px-2">
+          <h2 className="py-4 text-xl font-bold text-secondary-foreground lg:text-2xl">
+            {areaList.find((area) => area.AreaID === areaId)?.AreaName ??
+              "その他"}
+          </h2>
+          <ul className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3">
             {facilities.map((facility) => (
               <li key={facility.id}>
                 <StandbyCard
@@ -50,6 +58,6 @@ export default function StandbyByArea({ standbyList }: Props) {
           </ul>
         </div>
       ))}
-    </>
+    </div>
   );
 }

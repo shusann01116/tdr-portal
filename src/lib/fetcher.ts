@@ -1,10 +1,9 @@
-"use server";
-
-import { Facility, getLink, Greetings } from "@/lib/types";
 import {
   toFacilityRespFromAttraction,
   toFacilityRespFromGreeting,
-} from "./facility";
+} from "@/lib/facility";
+import { Facility, Greetings } from "@/lib/types";
+import { getLink } from "./link";
 
 export type FacilityResp = {
   id: string;
@@ -14,6 +13,10 @@ export type FacilityResp = {
   standbyTime: number;
   updatedAt: Date;
 };
+
+export const OPERATING_STATUS_ID = {
+  PREPARE: "008",
+} as const;
 
 export type ParkType = "tdl" | "tds";
 

@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className={cn(inter.className)}>
         <PageHeader />
-        <main className="container mx-auto flex flex-col items-center justify-center py-4">
+        <main className="mx-auto flex max-w-screen-lg flex-col items-center justify-center py-4">
           {children}
         </main>
       </body>

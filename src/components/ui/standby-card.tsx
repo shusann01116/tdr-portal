@@ -4,7 +4,6 @@ import { FacilityResp } from "@/lib/fetcher";
 import { Card } from "./card";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Typography as typography } from "./typography";
 import { Clock, Star } from "lucide-react";
 import { Badge, badgeVariants } from "./badge";
 import { Button } from "./button";
@@ -61,15 +60,15 @@ const SmallStandbyCard = ({
           className="rounded-md rounded-r-none object-cover"
         />
       </div>
-      <div className="mr-4 flex w-full flex-col gap-2 py-2">
-        <h1
-          className={cn(
-            typography({ variant: "large" }),
-            "line-clamp-2 w-full overflow-hidden text-ellipsis",
-          )}
-        >
-          {facility.name}
-        </h1>
+      <div className="mr-4 flex w-full flex-col gap-3 py-2">
+        <section>
+          <h1 className="line-clamp-1 w-full font-bold text-card-foreground">
+            {facility.name}
+          </h1>
+          <p className="line-clamp-1 text-xs text-secondary-foreground">
+            {facility.operatingStatus.name}
+          </p>
+        </section>
         <section className="flex gap-1">
           <Button
             variant="link"
@@ -80,20 +79,22 @@ const SmallStandbyCard = ({
             onClick={() => onFavorite(facility.id)}
           >
             {isFavorite ? (
-              <Star className="h-3 w-3 fill-accent-foreground" />
+              <Star className="h-3 w-3 border-none fill-primary stroke-primary" />
             ) : (
               <Star className="h-3 w-3" />
             )}
           </Button>
-          <Badge variant="outline" className="flex items-center gap-1">
-            {facility.standbyTime !== 0 ? (
-              <>
-                <Clock className="h-3 w-3" /> {facility.standbyTime}分待ち
-              </>
-            ) : (
-              <>案内終了</>
-            )}
-          </Badge>
+          {facility.standbyTime !== 0 && (
+            <Badge
+              variant="outline"
+              className="flex items-center gap-1 font-light"
+            >
+              <Clock className="h-3 w-3" /> {facility.standbyTime}分待ち
+            </Badge>
+          )}
+          <p className="ml-auto place-self-end font-mono text-[8px] text-muted-foreground">
+            ID:{facility.id}
+          </p>
         </section>
       </div>
     </Card>
