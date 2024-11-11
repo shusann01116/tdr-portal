@@ -51,7 +51,7 @@ const SmallStandbyCard = ({
   const defaultImage =
     "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80";
   return (
-    <Card className="flex flex-row gap-4 p-0">
+    <Card className="flex h-full flex-row gap-4 p-0">
       <div className="relative w-[40%] max-w-[120px]">
         <Image
           src={imageUrl || defaultImage}
@@ -69,12 +69,12 @@ const SmallStandbyCard = ({
             {facility.operatingStatus.name}
           </p>
         </section>
-        <section className="flex gap-1">
+        <section className="mt-auto flex items-center gap-1">
           <Button
             variant="link"
             className={cn(
               badgeVariants({ variant: "outline" }),
-              "flex h-6 items-center gap-1",
+              "flex h-full items-center gap-1",
             )}
             onClick={() => onFavorite(facility.id)}
           >
@@ -84,12 +84,18 @@ const SmallStandbyCard = ({
               <Star className="h-3 w-3" />
             )}
           </Button>
-          {facility.standbyTime !== 0 && (
+          {facility.standbyTime.time !== 0 && (
             <Badge
               variant="outline"
-              className="flex items-center gap-1 font-light"
+              className="flex h-full items-center gap-1 font-light"
             >
-              <Clock className="h-3 w-3" /> {facility.standbyTime}分待ち
+              <Clock className="h-3 w-3" />
+              <span className="flex items-baseline gap-[2px]">
+                <span className="text-sm font-semibold">
+                  {facility.standbyTime.time}
+                </span>
+                <span className="text-xs font-light">分待ち</span>
+              </span>
             </Badge>
           )}
           <p className="ml-auto place-self-end font-mono text-[8px] text-muted-foreground">

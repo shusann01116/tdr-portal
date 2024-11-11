@@ -13,8 +13,10 @@ export function toFacilityRespFromAttraction(f: Facility): FacilityResp {
       from: new Date(`${f.OperatingHoursFromDate} ${f.OperatingHoursFrom}:00`),
       to: new Date(`${f.OperatingHoursToDate} ${f.OperatingHoursTo}:00`),
     },
-    standbyTime:
-      typeof f.StandbyTime === "string" ? parseInt(f.StandbyTime, 10) : 0,
+    standbyTime: {
+      dateTime: new Date(f.UpdateTime),
+      time: typeof f.StandbyTime === "string" ? parseInt(f.StandbyTime, 10) : 0,
+    },
     updatedAt: new Date(f.UpdateTime),
   };
 }
@@ -42,10 +44,13 @@ export function toFacilityRespFromGreeting(
         `${operatingHours.OperatingHoursToDate} ${operatingHours.OperatingHoursTo}:00`,
       ),
     },
-    standbyTime:
-      typeof greeting.StandbyTime === "string"
-        ? parseInt(greeting.StandbyTime, 10)
-        : 0,
+    standbyTime: {
+      dateTime: new Date(greeting.UpdateTime),
+      time:
+        typeof greeting.StandbyTime === "string"
+          ? parseInt(greeting.StandbyTime, 10)
+          : 0,
+    },
     updatedAt: new Date(greeting.UpdateTime),
   };
 }

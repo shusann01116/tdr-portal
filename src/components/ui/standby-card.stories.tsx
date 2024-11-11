@@ -8,7 +8,7 @@ const facility: FacilityResp = {
   name: "ジャングルクルーズ：ワイルドライフエクスペディション",
   operatingStatus: { id: "1", name: "Open" },
   operatingHour: { from: new Date(), to: new Date() },
-  standbyTime: 10,
+  standbyTime: { dateTime: new Date(), time: 10 },
   updatedAt: new Date(),
 };
 
