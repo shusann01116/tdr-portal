@@ -16,7 +16,10 @@ const meta: Meta<typeof StandbyByArea> = {
           from: new Date("2024-11-02T09:00:00"),
           to: new Date("2024-11-02T21:00:00"),
         },
-        standbyTime: 5,
+        standbyTime: {
+          dateTime: new Date("2024-11-02T16:54:00"),
+          time: 5,
+        },
         updatedAt: new Date("2024-11-02T16:54:00"),
       },
     ],

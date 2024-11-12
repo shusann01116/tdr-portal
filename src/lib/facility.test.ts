@@ -4,6 +4,7 @@ import {
   toFacilityRespFromGreeting,
 } from "./facility";
 import { Facility } from "./types";
+import { FacilityResp } from "./fetcher";
 
 describe("toFacilityRespFromAttraction", () => {
   it("should transform a Facility object into a FacilityResp object", () => {
@@ -53,9 +54,7 @@ describe("toFacilityRespFromAttraction", () => {
       },
     };
 
-    const result = toFacilityRespFromAttraction(facility);
-
-    expect(result).toEqual({
+    const expected: FacilityResp = {
       id: "1",
       name: "Test Attraction",
       operatingStatus: { id: "open", name: "Open" },
@@ -63,9 +62,13 @@ describe("toFacilityRespFromAttraction", () => {
         from: new Date("2023-10-01T09:00:00"),
         to: new Date("2023-10-01T21:00:00"),
       },
-      standbyTime: 30,
+      standbyTime: { dateTime: new Date("2023-10-01T12:00:00Z"), time: 30 },
       updatedAt: new Date("2023-10-01T12:00:00Z"),
-    });
+    };
+
+    const result = toFacilityRespFromAttraction(facility);
+
+    expect(result).toEqual(expected);
   });
 });
 
@@ -128,9 +131,7 @@ describe("toFacilityRespFromGreeting", () => {
       operatingHours: [],
     };
 
-    const result = toFacilityRespFromGreeting(facility);
-
-    expect(result).toEqual({
+    const expected: FacilityResp = {
       id: "2",
       name: "Test Greeting",
       operatingStatus: { id: "closed", name: "Closed" },
@@ -138,9 +139,13 @@ describe("toFacilityRespFromGreeting", () => {
         from: new Date("2023-10-01T10:00:00"),
         to: new Date("2023-10-01T18:00:00"),
       },
-      standbyTime: 15,
+      standbyTime: { dateTime: new Date("2023-10-01T13:00:00Z"), time: 15 },
       updatedAt: new Date("2023-10-01T13:00:00Z"),
-    });
+    };
+
+    const result = toFacilityRespFromGreeting(facility);
+
+    expect(result).toEqual(expected);
   });
 
   it("should return undefined if greeting is not present", () => {

@@ -23,10 +23,10 @@ const FacilityItem = ({ facility }: { facility: FacilityResp }) => {
         </p>
       </section>
       <section className="flex-col text-right text-lg sm:flex-none sm:text-base">
-        {facility.standbyTime !== 0 && (
+        {facility.standbyTime.time !== 0 && (
           <>
             <span className="block sm:inline">
-              {facility.standbyTime}
+              {facility.standbyTime.time}
               &nbsp;分
             </span>
             <p className="hidden sm:inline">待ち</p>

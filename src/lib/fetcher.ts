@@ -8,15 +8,26 @@ import { getLink } from "./link";
 export type FacilityResp = {
   id: string;
   name: string;
-  operatingStatus: { id: string; name: string };
-  operatingHour: { from: Date; to: Date };
-  standbyTime: number;
+  operatingStatus: OperatingStatus;
+  operatingHour: OperatingHour;
+  standbyTime: StandbyTime;
   updatedAt: Date;
 };
 
-export const OPERATING_STATUS_ID = {
-  PREPARE: "008",
-} as const;
+export type OperatingStatus = {
+  id: string;
+  name: string;
+};
+
+export type OperatingHour = {
+  from: Date;
+  to: Date;
+};
+
+export type StandbyTime = {
+  dateTime: Date;
+  time: number;
+};
 
 export type ParkType = "tdl" | "tds";
 
