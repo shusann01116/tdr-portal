@@ -71,6 +71,7 @@ const SmallStandbyCard = ({
         </section>
         <section className="mt-auto flex items-center gap-1">
           <Button
+            name="favorite"
             variant="link"
             className={cn(
               badgeVariants({ variant: "outline" }),
