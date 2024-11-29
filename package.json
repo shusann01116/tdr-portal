@@ -16,7 +16,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
-    "@mui/material": "^6.1.8",
+    "@mui/material": "^6.1.9",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
     "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
