@@ -6,9 +6,10 @@
 		"dev": "next dev --turbopack",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
+		"format": "biome format --write .",
+		"lint": "biome check --write .",
+		"ci": "biome ci .",
 		"test": "vitest",
-		"pretty": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\"",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build"
 	},
