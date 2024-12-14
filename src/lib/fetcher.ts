@@ -2,7 +2,7 @@ import {
   toFacilityRespFromAttraction,
   toFacilityRespFromGreeting,
 } from "@/lib/facility";
-import { Facility, Greetings } from "@/lib/types";
+import type { Facility, Greetings } from "@/lib/types";
 import { getLink } from "./link";
 
 export type FacilityResp = {
@@ -74,14 +74,14 @@ export async function getGreetings(park: ParkType): Promise<FacilityResp[]> {
   const parsedData = JSON.parse(greetings) as Greetings;
   const facilities: FacilityResp[] = [];
 
-  Object.values(parsedData).forEach((area) => {
-    area.Facility.forEach((facility) => {
+  for (const area of Object.values(parsedData)) {
+    for (const facility of area.Facility) {
       const facilityResp = toFacilityRespFromGreeting(facility);
       if (facilityResp) {
         facilities.push(facilityResp);
       }
-    });
-  });
+    }
+  }
 
   return facilities;
 }

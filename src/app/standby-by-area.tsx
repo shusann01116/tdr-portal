@@ -2,7 +2,7 @@
 
 import { StandbyCard } from "@/components/ui/standby-card";
 import { areaList, getAreaByFacilityId } from "@/lib/area";
-import { FacilityResp } from "@/lib/fetcher";
+import type { FacilityResp } from "@/lib/fetcher";
 import { useState } from "react";
 
 type Props = {

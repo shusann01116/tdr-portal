@@ -1,7 +1,7 @@
+import type { FacilityResp } from "@/lib/fetcher";
 import type { Meta, StoryObj } from "@storybook/react";
-import { StandbyCard } from "./standby-card";
-import { FacilityResp } from "@/lib/fetcher";
 import { expect, fn, userEvent, within } from "@storybook/test";
+import { StandbyCard } from "./standby-card";
 
 const facility: FacilityResp = {
   id: "1",

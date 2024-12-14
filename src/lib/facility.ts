@@ -1,5 +1,5 @@
-import { Facility } from "./types";
-import { FacilityResp } from "./fetcher";
+import type { FacilityResp } from "./fetcher";
+import type { Facility } from "./types";
 
 export function toFacilityRespFromAttraction(f: Facility): FacilityResp {
   return {
@@ -15,7 +15,10 @@ export function toFacilityRespFromAttraction(f: Facility): FacilityResp {
     },
     standbyTime: {
       dateTime: new Date(f.UpdateTime),
-      time: typeof f.StandbyTime === "string" ? parseInt(f.StandbyTime, 10) : 0,
+      time:
+        typeof f.StandbyTime === "string"
+          ? Number.parseInt(f.StandbyTime, 10)
+          : 0,
     },
     updatedAt: new Date(f.UpdateTime),
   };
@@ -48,7 +51,7 @@ export function toFacilityRespFromGreeting(
       dateTime: new Date(greeting.UpdateTime),
       time:
         typeof greeting.StandbyTime === "string"
-          ? parseInt(greeting.StandbyTime, 10)
+          ? Number.parseInt(greeting.StandbyTime, 10)
           : 0,
     },
     updatedAt: new Date(greeting.UpdateTime),

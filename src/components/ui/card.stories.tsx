@@ -1,9 +1,9 @@
 import type { Meta } from "@storybook/react";
 import {
   Card,
-  CardFooter,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "./card";

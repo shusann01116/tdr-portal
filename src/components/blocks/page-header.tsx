@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { Poiret_One } from "next/font/google";
+import Link from "next/link";
 
 const poiret = Poiret_One({
   subsets: ["latin"],

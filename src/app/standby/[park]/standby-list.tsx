@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import { FacilityResp, getStandbys, ParkType } from "@/lib/fetcher";
+import { badgeVariants } from "@/components/ui/badge";
+import { type FacilityResp, type ParkType, getStandbys } from "@/lib/fetcher";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { badgeVariants } from "@/components/ui/badge";
+import { Suspense } from "react";
 
 const FacilityItem = ({ facility }: { facility: FacilityResp }) => {
   return (
@@ -79,7 +79,7 @@ export const StandbyList = async ({ park }: { park: ParkType }) => {
           ))}
         </ul>
       </Suspense>
-      <div className="mt-4"></div>
+      <div className="mt-4" />
     </>
   );
 };

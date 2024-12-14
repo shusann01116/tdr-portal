@@ -1,4 +1,4 @@
-import { Facility } from "./types";
+import type { Facility } from "./types";
 
 export interface Area {
   AreaID: string;

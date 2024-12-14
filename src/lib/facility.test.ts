@@ -1,10 +1,10 @@
-import { expect, it, describe } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   toFacilityRespFromAttraction,
   toFacilityRespFromGreeting,
 } from "./facility";
-import { Facility } from "./types";
-import { FacilityResp } from "./fetcher";
+import type { FacilityResp } from "./fetcher";
+import type { Facility } from "./types";
 
 describe("toFacilityRespFromAttraction", () => {
   it("should transform a Facility object into a FacilityResp object", () => {

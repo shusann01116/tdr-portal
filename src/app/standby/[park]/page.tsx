@@ -1,6 +1,6 @@
-import { ParkType } from "@/lib/fetcher";
-import { StandbyList } from "./standby-list";
+import type { ParkType } from "@/lib/fetcher";
 import { Suspense } from "react";
+import { StandbyList } from "./standby-list";
 
 export const dynamicParams = false;
 export const revalidate = 60;

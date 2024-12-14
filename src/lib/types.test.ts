@@ -1,6 +1,6 @@
-import { ParkType } from "./fetcher";
 import { describe, expect, it } from "vitest";
-import { Link } from "./link";
+import type { ParkType } from "./fetcher";
+import type { Link } from "./link";
 import { getLink } from "./link";
 
 describe("getLink", () => {
