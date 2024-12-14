@@ -1,11 +1,11 @@
 {
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "next/core-web-vitals",
-    "plugin:storybook/recommended"
-  ],
-  "rules": {
-    "no-console": "error"
-  }
+	"extends": [
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"next/core-web-vitals",
+		"plugin:storybook/recommended"
+	],
+	"rules": {
+		"no-console": "error"
+	}
 }

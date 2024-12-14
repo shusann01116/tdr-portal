@@ -1,27 +1,27 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Next.js: debug full stack",
-      "type": "node-terminal",
-      "request": "launch",
-      "command": "pnpm dev",
-      "serverReadyAction": {
-        "pattern": "- Local:.+(https?://.+)",
-        "uriFormat": "%s",
-        "action": "debugWithChrome"
-      }
-    },
-    {
-      "name": "Storybook: debug",
-      "type": "node-terminal",
-      "request": "launch",
-      "command": "pnpm storybook --no-open",
-      "serverReadyAction": {
-        "pattern": ".+Local:.+(https?://.+/)",
-        "uriFormat": "%s",
-        "action": "debugWithChrome"
-      }
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Next.js: debug full stack",
+			"type": "node-terminal",
+			"request": "launch",
+			"command": "pnpm dev",
+			"serverReadyAction": {
+				"pattern": "- Local:.+(https?://.+)",
+				"uriFormat": "%s",
+				"action": "debugWithChrome"
+			}
+		},
+		{
+			"name": "Storybook: debug",
+			"type": "node-terminal",
+			"request": "launch",
+			"command": "pnpm storybook --no-open",
+			"serverReadyAction": {
+				"pattern": ".+Local:.+(https?://.+/)",
+				"uriFormat": "%s",
+				"action": "debugWithChrome"
+			}
+		}
+	]
 }
