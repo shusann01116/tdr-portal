@@ -8,19 +8,19 @@ import type { ReactNode } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Disney App",
-  description: "Dashboard app makes your disney life easier.",
+	title: "Disney App",
+	description: "Dashboard app makes your disney life easier.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en">
-      <body className={cn(inter.className)}>
-        <PageHeader />
-        <main className="mx-auto flex max-w-screen-lg flex-col items-center justify-center py-4">
-          {children}
-        </main>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={cn(inter.className)}>
+				<PageHeader />
+				<main className="mx-auto flex max-w-screen-lg flex-col items-center justify-center py-4">
+					{children}
+				</main>
+			</body>
+		</html>
+	);
 }

@@ -7,29 +7,29 @@ import "../src/app/globals.css";
 initialize();
 
 const preview: Preview = {
-  parameters: {
-    darkMode: {
-      classTarget: "html",
-      darkClass: "dark",
-      lightClass: "",
-    },
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-  },
-  loaders: [mswLoader],
-  decorators: [
-    withThemeByClassName({
-      themes: {
-        light: "",
-        dark: "dark",
-      },
-      defaultTheme: "light",
-    }),
-  ],
+	parameters: {
+		darkMode: {
+			classTarget: "html",
+			darkClass: "dark",
+			lightClass: "",
+		},
+		controls: {
+			matchers: {
+				color: /(background|color)$/i,
+				date: /Date$/i,
+			},
+		},
+	},
+	loaders: [mswLoader],
+	decorators: [
+		withThemeByClassName({
+			themes: {
+				light: "",
+				dark: "dark",
+			},
+			defaultTheme: "light",
+		}),
+	],
 };
 
 export default preview;
