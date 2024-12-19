@@ -1,25 +1,14 @@
-"use client";
-
 import { StandbyCard } from "@/components/ui/standby-card";
 import { areaList, getAreaByFacilityId } from "@/lib/area";
-import type { FacilityResp } from "@/lib/fetcher";
-import { useState } from "react";
+import { getStandbys, type FacilityResp } from "@/lib/fetcher";
 
-type Props = {
-  standbyList: FacilityResp[];
-};
+export default async function StandbyByArea() {
+  const [standbyListTdl, standbyListTds] = await Promise.all([
+    getStandbys("tdl"),
+    getStandbys("tds"),
+  ]);
 
-export default function StandbyByArea({ standbyList }: Props) {
-  const [favoriteList, setFavoriteList] = useState<Record<string, boolean>>(
-    standbyList.reduce(
-      (acc, facility) => {
-        acc[facility.id] = false;
-        return acc;
-      },
-      {} as Record<string, boolean>,
-    ),
-  );
-
+  const standbyList = [...standbyListTdl, ...standbyListTds];
   const groupedByArea = standbyList.reduce(
     (acc, facility) => {
       const area = getAreaByFacilityId(facility.id) ?? {
@@ -38,21 +27,14 @@ export default function StandbyByArea({ standbyList }: Props) {
     <div className="space-y-6">
       {Object.entries(groupedByArea).map(([areaId, facilities]) => (
         <div key={areaId} className="w-full px-2">
-          <h2 className="py-4 text-xl font-bold text-secondary-foreground lg:text-2xl">
+          <h2 className="sticky top-0 z-20 bg-gradient-to-t from-transparent to-background/50 py-4 font-bold text-secondary-foreground text-xl lg:text-2xl">
             {areaList.find((area) => area.AreaID === areaId)?.AreaName ??
               "その他"}
           </h2>
           <ul className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3">
             {facilities.map((facility) => (
               <li key={facility.id}>
-                <StandbyCard
-                  facility={facility}
-                  size="sm"
-                  onFavorite={(id) => {
-                    setFavoriteList((prev) => ({ ...prev, [id]: !prev[id] }));
-                  }}
-                  isFavorite={favoriteList[facility.id] ?? false}
-                />
+                <StandbyCard facility={facility} size="sm" />
               </li>
             ))}
           </ul>

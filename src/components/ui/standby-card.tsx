@@ -7,27 +7,22 @@ import Image from "next/image";
 import { Badge, badgeVariants } from "./badge";
 import { Button } from "./button";
 import { Card } from "./card";
+import { useFavorite } from "@/lib/favorite";
 
 type StandbyCardProps = {
   facility: FacilityResp;
   size: "sm" | "lg";
-  onFavorite: (facilityId: string) => void;
-  isFavorite: boolean;
   imageUrl?: string;
 };
 
-export const StandbyCard = ({
-  facility,
-  size,
-  onFavorite,
-  isFavorite,
-  imageUrl,
-}: StandbyCardProps) => {
+export const StandbyCard = ({ facility, size, imageUrl }: StandbyCardProps) => {
+  const { isFavorite, toggleFavorite } = useFavorite(facility.id);
+
   if (size === "sm") {
     return (
       <SmallStandbyCard
         facility={facility}
-        onFavorite={onFavorite}
+        onFavorite={toggleFavorite}
         isFavorite={isFavorite}
         imageUrl={imageUrl}
       />
@@ -65,7 +60,7 @@ const SmallStandbyCard = ({
           <h1 className="line-clamp-1 w-full font-bold text-card-foreground">
             {facility.name}
           </h1>
-          <p className="line-clamp-1 text-xs text-secondary-foreground">
+          <p className="line-clamp-1 text-secondary-foreground text-xs">
             {facility.operatingStatus.name}
           </p>
         </section>
@@ -92,10 +87,10 @@ const SmallStandbyCard = ({
             >
               <Clock className="h-3 w-3" />
               <span className="flex items-baseline gap-[2px]">
-                <span className="text-sm font-semibold">
+                <span className="font-semibold text-sm">
                   {facility.standbyTime.time}
                 </span>
-                <span className="text-xs font-light">分待ち</span>
+                <span className="font-light text-xs">分待ち</span>
               </span>
             </Badge>
           )}
