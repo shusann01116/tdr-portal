@@ -1,5 +1,6 @@
 "use client";
 
+import { useFavorite } from "@/lib/favorite";
 import type { FacilityResp } from "@/lib/fetcher";
 import { cn } from "@/lib/utils";
 import { Clock, Star } from "lucide-react";
@@ -7,7 +8,6 @@ import Image from "next/image";
 import { Badge, badgeVariants } from "./badge";
 import { Button } from "./button";
 import { Card } from "./card";
-import { useFavorite } from "@/lib/favorite";
 
 type StandbyCardProps = {
   facility: FacilityResp;

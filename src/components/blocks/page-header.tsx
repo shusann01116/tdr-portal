@@ -16,7 +16,7 @@ export default function PageHeader() {
           href="/"
           className={cn(
             poiret.className,
-            "bg-primary p-2 text-4xl font-bold text-primary-foreground",
+            "bg-primary p-2 font-bold text-4xl text-primary-foreground",
           )}
         >
           Disney Portal

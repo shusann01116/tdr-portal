@@ -5,5 +5,5 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
-  },
+  }
 }

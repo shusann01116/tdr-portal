@@ -11,12 +11,12 @@ const FacilityItem = ({ facility }: { facility: FacilityResp }) => {
       className="flex gap-8 overflow-hidden bg-background py-4"
     >
       <section className="flex-1">
-        <h2 className="text-wrap text-xl font-bold text-foreground">
+        <h2 className="text-wrap font-bold text-foreground text-xl">
           {facility.name}
         </h2>
         <p className="mt-2 flex">
           {facility.operatingStatus.name && (
-            <span className="items-center text-sm text-muted-foreground">
+            <span className="items-center text-muted-foreground text-sm">
               {facility.operatingStatus.name}
             </span>
           )}

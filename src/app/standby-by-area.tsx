@@ -1,6 +1,6 @@
 import { StandbyCard } from "@/components/ui/standby-card";
 import { areaList, getAreaByFacilityId } from "@/lib/area";
-import { getStandbys, type FacilityResp } from "@/lib/fetcher";
+import { type FacilityResp, getStandbys } from "@/lib/fetcher";
 
 export default async function StandbyByArea() {
   const [standbyListTdl, standbyListTds] = await Promise.all([
