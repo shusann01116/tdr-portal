@@ -1,11 +1,10 @@
-import { getStandbys } from "@/lib/fetcher";
+import { Suspense } from "react";
 import StandbyByArea from "./standby-by-area";
 
 export default async function Page() {
-  const [standbyListTdl, standbyListTds] = await Promise.all([
-    getStandbys("tdl"),
-    getStandbys("tds"),
-  ]);
-  const standbyList = [...standbyListTdl, ...standbyListTds];
-  return <StandbyByArea standbyList={standbyList} />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <StandbyByArea />
+    </Suspense>
+  );
 }
