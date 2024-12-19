@@ -1,7 +1,7 @@
 "use client";
 
-import { useFavorite } from "@/lib/favorite";
-import type { FacilityResp } from "@/lib/fetcher";
+import { useFavorite } from "@/lib/tdr/favorite";
+import type { FacilityResp } from "@/lib/tdr/fetcher";
 import { cn } from "@/lib/utils";
 import { Clock, Star } from "lucide-react";
 import Image from "next/image";

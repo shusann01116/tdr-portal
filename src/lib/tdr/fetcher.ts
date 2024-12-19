@@ -1,8 +1,8 @@
 import {
   toFacilityRespFromAttraction,
   toFacilityRespFromGreeting,
-} from "@/lib/facility";
-import type { Facility, Greetings } from "@/lib/types";
+} from "@/lib/tdr/facility";
+import type { Facility, Greetings } from "@/lib/tdr/types";
 import { getLink } from "./link";
 
 export type FacilityResp = {

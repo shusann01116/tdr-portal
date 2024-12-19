@@ -1,4 +1,4 @@
-import type { FacilityResp } from "@/lib/fetcher";
+import type { FacilityResp } from "@/lib/tdr/fetcher";
 import type { Meta, StoryObj } from "@storybook/react";
 import { StandbyCard } from "./standby-card";
 

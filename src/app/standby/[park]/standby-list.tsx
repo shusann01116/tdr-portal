@@ -1,5 +1,9 @@
 import { badgeVariants } from "@/components/ui/badge";
-import { type FacilityResp, type ParkType, getStandbys } from "@/lib/fetcher";
+import {
+  type FacilityResp,
+  type ParkType,
+  getStandbys,
+} from "@/lib/tdr/fetcher";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";

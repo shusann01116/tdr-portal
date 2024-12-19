@@ -1,4 +1,4 @@
-import type { ParkType } from "@/lib/fetcher";
+import type { ParkType } from "@/lib/tdr/fetcher";
 import { Suspense } from "react";
 import { StandbyList } from "./standby-list";
 
