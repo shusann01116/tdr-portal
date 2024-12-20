@@ -1,5 +1,7 @@
 # TDR Portal (WIP)
 
-東京ディズニーリゾート内で便利に情報を確認できるポータルサイト
+Portal App to check Tokyo Disney Resort info
 
-技術的な内容は [doc/Dev.md](./doc/Dev.md) を参照してください。
+Please refer [doc/Dev.md](./doc/Dev.md) for technical info.
+
+![image](https://github.com/user-attachments/assets/27fd59c8-aaeb-4c66-a0cd-fa234a5508b4)
