@@ -1,4 +1,4 @@
-import type { ParkType } from "@/lib/tdr/fetcher";
+import { toParkType } from "@/lib/tdr/park";
 import { Suspense } from "react";
 import { StandbyList } from "./standby-list";
 
@@ -10,10 +10,11 @@ export default async function Page({
 }: {
   params: Promise<{ park: string }>;
 }) {
-  const park = (await params).park;
+  const park = toParkType((await params).park);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <StandbyList park={park as ParkType} />
+      <StandbyList park={park} />
     </Suspense>
   );
 }

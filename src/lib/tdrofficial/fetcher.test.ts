@@ -1,14 +1,11 @@
 import { describe, expect, it } from "vitest";
-import {
-  toFacilityRespFromAttraction,
-  toFacilityRespFromGreeting,
-} from "./facility";
-import type { FacilityResp } from "./fetcher";
-import type { Facility } from "./types";
+import type { Facility } from "../tdr/facility";
+import { toFacilityFromAttraction, toFacilityFromGreeting } from "./fetcher";
+import type { API_Facility } from "./types";
 
 describe("toFacilityRespFromAttraction", () => {
   it("should transform a Facility object into a FacilityResp object", () => {
-    const facility: Facility = {
+    const facility: API_Facility = {
       FacilityID: "1",
       FacilityName: "Test Attraction",
       OperatingStatusCD: "open",
@@ -54,7 +51,7 @@ describe("toFacilityRespFromAttraction", () => {
       },
     };
 
-    const expected: FacilityResp = {
+    const expected: Facility = {
       id: "1",
       name: "Test Attraction",
       operatingStatus: { id: "open", name: "Open" },
@@ -66,7 +63,7 @@ describe("toFacilityRespFromAttraction", () => {
       updatedAt: new Date("2023-10-01T12:00:00Z"),
     };
 
-    const result = toFacilityRespFromAttraction(facility);
+    const result = toFacilityFromAttraction(facility);
 
     expect(result).toEqual(expected);
   });
@@ -74,7 +71,7 @@ describe("toFacilityRespFromAttraction", () => {
 
 describe("toFacilityRespFromGreeting", () => {
   it("should transform a Facility object with greeting into a FacilityResp object", () => {
-    const facility: Facility = {
+    const facility: API_Facility = {
       greeting: {
         FacilityID: "2",
         FacilityName: "Test Greeting",
@@ -131,7 +128,7 @@ describe("toFacilityRespFromGreeting", () => {
       operatingHours: [],
     };
 
-    const expected: FacilityResp = {
+    const expected: Facility = {
       id: "2",
       name: "Test Greeting",
       operatingStatus: { id: "closed", name: "Closed" },
@@ -143,15 +140,15 @@ describe("toFacilityRespFromGreeting", () => {
       updatedAt: new Date("2023-10-01T13:00:00Z"),
     };
 
-    const result = toFacilityRespFromGreeting(facility);
+    const result = toFacilityFromGreeting(facility);
 
     expect(result).toEqual(expected);
   });
 
   it("should return undefined if greeting is not present", () => {
-    const facility: Facility = {} as Facility;
+    const facility: API_Facility = {} as API_Facility;
 
-    const result = toFacilityRespFromGreeting(facility);
+    const result = toFacilityFromGreeting(facility);
 
     expect(result).toBeUndefined();
   });

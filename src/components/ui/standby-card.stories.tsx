@@ -1,8 +1,8 @@
-import type { FacilityResp } from "@/lib/tdr/fetcher";
+import type { Facility } from "@/lib/tdr/facility";
 import type { Meta, StoryObj } from "@storybook/react";
 import { StandbyCard } from "./standby-card";
 
-const facility: FacilityResp = {
+const facility: Facility = {
   id: "1",
   name: "ジャングルクルーズ：ワイルドライフエクスペディション",
   operatingStatus: { id: "1", name: "Open" },

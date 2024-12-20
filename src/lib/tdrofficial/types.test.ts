@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import type { ParkType } from "./fetcher";
-import type { Link } from "./link";
-import { getLink } from "./link";
+import type { Link } from "../tdr/link";
+import { getLink } from "../tdr/link";
+import { ParkType } from "../tdr/park";
 
 describe("getLink", () => {
   it("getLink for tdl", () => {
@@ -10,7 +10,7 @@ describe("getLink", () => {
         "https://www.tokyodisneyresort.jp/_/realtime/tdl_attraction.json",
       greeting: "https://www.tokyodisneyresort.jp/_/realtime/tdl_greeting.json",
     };
-    expect(getLink("tdl")).toEqual(expected);
+    expect(getLink(ParkType.ParkTypeTDL)).toEqual(expected);
   });
 
   it("getLink for tds", () => {
@@ -19,10 +19,6 @@ describe("getLink", () => {
         "https://www.tokyodisneyresort.jp/_/realtime/tds_attraction.json",
       greeting: "https://www.tokyodisneyresort.jp/_/realtime/tds_greeting.json",
     };
-    expect(getLink("tds")).toEqual(expected);
-  });
-
-  it("getLink for invalid park", () => {
-    expect(getLink("invalid" as ParkType)).toBeNull();
+    expect(getLink(ParkType.ParkTypeTDS)).toEqual(expected);
   });
 });

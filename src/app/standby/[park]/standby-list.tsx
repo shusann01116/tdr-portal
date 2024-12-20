@@ -1,14 +1,12 @@
 import { badgeVariants } from "@/components/ui/badge";
-import {
-  type FacilityResp,
-  type ParkType,
-  getStandbys,
-} from "@/lib/tdr/fetcher";
+import type { Facility } from "@/lib/tdr/facility";
+import { ParkType } from "@/lib/tdr/park";
+import { getStandbys } from "@/lib/tdrofficial/fetcher";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const FacilityItem = ({ facility }: { facility: FacilityResp }) => {
+const FacilityItem = ({ facility }: { facility: Facility }) => {
   return (
     <li
       key={facility.id}
@@ -57,7 +55,7 @@ export const StandbyList = async ({ park }: { park: ParkType }) => {
             badgeVariants({ variant: "outline" }),
             "bg-muted text-muted-foreground",
             {
-              "bg-background text-foreground": park === "tdl",
+              "bg-background text-foreground": park === ParkType.ParkTypeTDL,
             },
           )}
         >
@@ -69,7 +67,7 @@ export const StandbyList = async ({ park }: { park: ParkType }) => {
             badgeVariants({ variant: "outline" }),
             "bg-muted text-muted-foreground",
             {
-              "bg-background text-foreground": park === "tds",
+              "bg-background text-foreground": park === ParkType.ParkTypeTDS,
             },
           )}
         >

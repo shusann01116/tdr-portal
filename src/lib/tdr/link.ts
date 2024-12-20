@@ -1,9 +1,11 @@
+import { ParkType } from "./park";
+
 export interface Link {
   attraction: string;
   greeting: string;
 }
 
-const links = {
+const OFFICIAL_LINK_MAP = {
   tdl_attraction:
     "https://www.tokyodisneyresort.jp/_/realtime/tdl_attraction.json",
   tds_attraction:
@@ -12,19 +14,17 @@ const links = {
   tds_greeting: "https://www.tokyodisneyresort.jp/_/realtime/tds_greeting.json",
 } as const;
 
-export type ParkType = "tdl" | "tds";
-
 export function getLink(park: ParkType): Link | null {
   switch (park) {
-    case "tdl":
+    case ParkType.ParkTypeTDL:
       return {
-        attraction: links.tdl_attraction,
-        greeting: links.tdl_greeting,
+        attraction: OFFICIAL_LINK_MAP.tdl_attraction,
+        greeting: OFFICIAL_LINK_MAP.tdl_greeting,
       };
-    case "tds":
+    case ParkType.ParkTypeTDS:
       return {
-        attraction: links.tds_attraction,
-        greeting: links.tds_greeting,
+        attraction: OFFICIAL_LINK_MAP.tds_attraction,
+        greeting: OFFICIAL_LINK_MAP.tds_greeting,
       };
     default:
       return null;
