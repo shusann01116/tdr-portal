@@ -1,7 +1,7 @@
 "use client";
 
-import { useFavorite } from "@/lib/favorite";
-import type { FacilityResp } from "@/lib/fetcher";
+import { useFavorite } from "@/app/hooks/favorite";
+import type { Facility } from "@/lib/tdr/facility";
 import { cn } from "@/lib/utils";
 import { Clock, Star } from "lucide-react";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import { Button } from "./button";
 import { Card } from "./card";
 
 type StandbyCardProps = {
-  facility: FacilityResp;
+  facility: Facility;
   size: "sm" | "lg";
   imageUrl?: string;
 };
@@ -38,7 +38,7 @@ const SmallStandbyCard = ({
   imageUrl,
   onFavorite,
 }: {
-  facility: FacilityResp;
+  facility: Facility;
   isFavorite: boolean;
   imageUrl?: string;
   onFavorite: (facilityId: string) => void;

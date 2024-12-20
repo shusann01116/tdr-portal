@@ -1,4 +1,4 @@
-export interface FacilityOperatingHours {
+export interface API_FacilityOperatingHours {
   OperatingHoursFromDate: string;
   OperatingHoursFrom: string;
   OperatingHoursToDate: string;
@@ -9,7 +9,7 @@ export interface FacilityOperatingHours {
   OperatingChgFlg: boolean;
 }
 
-export interface Facility {
+export interface API_Facility {
   FacilityID: string;
   FacilityName: string;
   FacilityKanaName: string;
@@ -37,14 +37,14 @@ export interface Facility {
   UseStandbyTimeStyle: boolean;
   OperatingChgFlg: boolean;
   UpdateTime: string;
-  operatingHours: FacilityOperatingHours[];
+  operatingHours: API_FacilityOperatingHours[];
 
   // greeting
-  greeting: FacilityGreeting;
-  cameraman?: FacilityCameraman;
+  greeting: API_FacilityGreeting;
+  cameraman?: API_FacilityCameraman;
 }
 
-export interface OperatingHours {
+export interface API_OperatingHours {
   OperatingHoursFromDate: string;
   OperatingHoursFrom: string;
   OperatingHoursToDate: string;
@@ -55,7 +55,7 @@ export interface OperatingHours {
   SunsetFlg: boolean;
 }
 
-export interface FacilityGreeting {
+export interface API_FacilityGreeting {
   FacilityID: string;
   FacilityName: string;
   FacilityKanaName: string;
@@ -66,27 +66,27 @@ export interface FacilityGreeting {
   FacilityStatusCD: string | null;
   FacilityStatus: string | null;
   StandbyTime: string | null;
-  operatinghours: OperatingHours[];
+  operatinghours: API_OperatingHours[];
   UseStandbyTimeStyle: boolean;
   UpdateTime: string;
 }
 
-export interface FacilityCameraman {
+export interface API_FacilityCameraman {
   FacilityID: string;
   FacilityName: string;
   FacilityKanaName: string;
   FacilityStatusCD: string;
   FacilityStatus: string;
-  operatinghours: OperatingHours[] | null;
+  operatinghours: API_OperatingHours[] | null;
   UpdateTime: string;
 }
 
-export interface Area {
+export interface API_Area {
   AreaJName: string;
   AreaMName: string;
-  Facility: Facility[];
+  Facility: API_Facility[];
 }
 
-export interface Greetings {
-  [key: string]: Area;
+export interface API_Greetings {
+  [key: string]: API_Area;
 }
