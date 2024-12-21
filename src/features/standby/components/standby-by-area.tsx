@@ -3,19 +3,18 @@ import { StandbyCard } from "@/features/standby/components/standby-card";
 import { groupByArea } from "@/features/tdr/area";
 import { AREA_LIST } from "@/features/tdr/const";
 import type { Facility } from "@/features/tdr/facility";
-import { ParkType } from "@/features/tdr/park";
+import type { ParkType } from "@/features/tdr/park";
 import { Suspense } from "react";
 
-export default async function StandbyByArea() {
+export default async function StandbyByArea({
+  park,
+}: {
+  park: ParkType;
+}) {
   return (
-    <div className="gap-y-6">
-      <Suspense fallback={<div>Loading...</div>}>
-        <_StandbyByArea facilityPromise={getFacilities(ParkType.ParkTypeTDL)} />
-      </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
-        <_StandbyByArea facilityPromise={getFacilities(ParkType.ParkTypeTDS)} />
-      </Suspense>
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <_StandbyByArea facilityPromise={getFacilities(park)} />
+    </Suspense>
   );
 }
 
