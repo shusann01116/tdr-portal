@@ -1,6 +1,6 @@
-import { toParkType } from "@/lib/tdr/park";
+import { toParkType } from "@/features/tdr/park";
 import { Suspense } from "react";
-import { StandbyList } from "./standby-list";
+import { StandbyList } from "../../../features/standby/components/standby-list";
 
 export const dynamicParams = false;
 export const revalidate = 60;

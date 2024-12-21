@@ -1,8 +1,8 @@
 import { badgeVariants } from "@/components/ui/badge";
-import type { Facility } from "@/lib/tdr/facility";
-import { ParkType } from "@/lib/tdr/park";
-import { getStandbys } from "@/lib/tdrofficial/fetcher";
-import { cn } from "@/lib/utils";
+import { getStandbys } from "@/features/official/fetcher";
+import type { Facility } from "@/features/tdr/facility";
+import { ParkType } from "@/features/tdr/park";
+import { cn } from "@/libs/utils";
 import Link from "next/link";
 import { Suspense } from "react";
 

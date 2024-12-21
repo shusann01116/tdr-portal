@@ -1,5 +1,5 @@
-import type { Facility } from "@/lib/tdr/facility";
-import type { API_Facility, API_Greetings } from "@/lib/tdrofficial/types";
+import type { API_Facility, API_Greetings } from "@/features/official/types";
+import type { Facility } from "@/features/tdr/facility";
 import { getLink } from "../tdr/link";
 import type { ParkType } from "../tdr/park";
 

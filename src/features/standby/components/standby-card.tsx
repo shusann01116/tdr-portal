@@ -1,13 +1,13 @@
 "use client";
 
-import { useFavorite } from "@/app/hooks/favorite";
-import type { Facility } from "@/lib/tdr/facility";
-import { cn } from "@/lib/utils";
+import { useFavorite } from "@/features/standby/hooks/favorite";
+import type { Facility } from "@/features/tdr/facility";
+import { cn } from "@/libs/utils";
 import { Clock, Star } from "lucide-react";
 import Image from "next/image";
-import { Badge, badgeVariants } from "./badge";
-import { Button } from "./button";
-import { Card } from "./card";
+import { Badge, badgeVariants } from "../../../components/ui/badge";
+import { Button } from "../../../components/ui/button";
+import { Card } from "../../../components/ui/card";
 
 type StandbyCardProps = {
   facility: Facility;

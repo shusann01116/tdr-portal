@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
+import {
+  toFacilityFromAttraction,
+  toFacilityFromGreeting,
+} from "../../libs/tdrofficial/fetcher";
+import type { API_Facility } from "../../libs/tdrofficial/types";
 import type { Facility } from "../tdr/facility";
-import { toFacilityFromAttraction, toFacilityFromGreeting } from "./fetcher";
-import type { API_Facility } from "./types";
 
 describe("toFacilityRespFromAttraction", () => {
   it("should transform a Facility object into a FacilityResp object", () => {

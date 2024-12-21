@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import PageHeader from "@/components/blocks/page-header";
-import { cn } from "@/lib/utils";
+import PageHeader from "@/components/page-header";
+import { cn } from "@/libs/utils";
 import type { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
