@@ -12,10 +12,9 @@ import { Card } from "../../../components/ui/card";
 type StandbyCardProps = {
   facility: Facility;
   size: "sm" | "lg";
-  imageUrl?: string;
 };
 
-export const StandbyCard = ({ facility, size, imageUrl }: StandbyCardProps) => {
+export const StandbyCard = ({ facility, size }: StandbyCardProps) => {
   const { isFavorite, toggleFavorite } = useFavorite(facility.id);
 
   if (size === "sm") {
@@ -24,7 +23,6 @@ export const StandbyCard = ({ facility, size, imageUrl }: StandbyCardProps) => {
         facility={facility}
         onFavorite={toggleFavorite}
         isFavorite={isFavorite}
-        imageUrl={imageUrl}
       />
     );
   }
@@ -35,22 +33,23 @@ export const StandbyCard = ({ facility, size, imageUrl }: StandbyCardProps) => {
 const SmallStandbyCard = ({
   facility,
   isFavorite,
-  imageUrl,
   onFavorite,
 }: {
   facility: Facility;
   isFavorite: boolean;
-  imageUrl?: string;
   onFavorite: (facilityId: string) => void;
 }) => {
-  const defaultImage =
-    "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80";
+  const DEFAULT_IMAGE = {
+    url: "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80",
+    alt: "Photo by Drew Beamer",
+  };
+
   return (
     <Card className="flex h-full flex-row gap-4 p-0">
       <div className="relative w-[40%] max-w-[120px]">
         <Image
-          src={imageUrl || defaultImage}
-          alt="Photo by Drew Beamer"
+          src={facility.facilityImage?.main.url || DEFAULT_IMAGE.url}
+          alt={facility.facilityImage?.main.alt || DEFAULT_IMAGE.alt}
           fill
           className="rounded-md rounded-r-none object-cover"
         />

@@ -1,5 +1,5 @@
 import { badgeVariants } from "@/components/ui/badge";
-import { getStandbys } from "@/features/official/fetcher";
+import { getStandbys } from "@/features/official/fetcher.mock";
 import type { Facility } from "@/features/tdr/facility";
 import { ParkType } from "@/features/tdr/park";
 import { cn } from "@/libs/utils";
