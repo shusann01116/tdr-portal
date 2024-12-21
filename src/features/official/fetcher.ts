@@ -1,19 +1,28 @@
 import type { API_Facility, API_Greetings } from "@/features/official/types";
 import type { Facility } from "@/features/tdr/facility";
+import { unstable_cache } from "next/cache";
 import { RAW_FACILITY_DATA } from "../tdr/const/raw/facility";
 import { getLink } from "../tdr/link";
 import type { ParkType } from "../tdr/park";
 
 export async function getFacilities(park: ParkType): Promise<Facility[]> {
   const [attractions, greetings] = await Promise.all([
-    getAttractions(park),
-    getGreetings(park),
+    getCachedAttractions(park),
+    getCachedGreetings(park),
   ]);
 
   return [...attractions, ...greetings];
 }
 
-export async function getAttractions(park: ParkType): Promise<Facility[]> {
+const getCachedAttractions = unstable_cache(
+  async (park: ParkType) => {
+    return getAttractions(park);
+  },
+  ["attractions"],
+  { revalidate: 60 },
+);
+
+async function getAttractions(park: ParkType): Promise<Facility[]> {
   const link = getLink(park);
   if (link == null) {
     return [];
@@ -28,7 +37,15 @@ export async function getAttractions(park: ParkType): Promise<Facility[]> {
   return facilities.map(toFacilityFromAttraction);
 }
 
-export async function getGreetings(park: ParkType): Promise<Facility[]> {
+const getCachedGreetings = unstable_cache(
+  async (park: ParkType) => {
+    return getGreetings(park);
+  },
+  ["greetings"],
+  { revalidate: 60 },
+);
+
+async function getGreetings(park: ParkType): Promise<Facility[]> {
   const link = getLink(park);
   if (link == null) {
     return [];
