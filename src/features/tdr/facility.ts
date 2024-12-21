@@ -1,10 +1,13 @@
+export type FacilityId = string;
+
 export type Facility = {
-  id: string;
+  id: FacilityId;
   name: string;
   operatingStatus: OperatingStatus;
   operatingHour: OperatingHour;
   standbyTime: StandbyTime;
   updatedAt: Date;
+  facilityImage?: FacilityImage;
 };
 
 export type OperatingStatus = {
@@ -20,4 +23,13 @@ export type OperatingHour = {
 export type StandbyTime = {
   dateTime: Date;
   time: number;
+};
+
+type Image = {
+  url: string;
+  alt: string | undefined;
+};
+
+export type FacilityImage = {
+  main: Image;
 };

@@ -1,4 +1,4 @@
-import type { Facility } from "@/lib/tdr/facility";
+import type { Facility } from "@/features/tdr/facility";
 import type { Meta, StoryObj } from "@storybook/react";
 import { StandbyCard } from "./standby-card";
 

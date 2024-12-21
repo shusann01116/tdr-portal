@@ -17,6 +17,9 @@ const nextConfig = {
       {
         hostname: "images.unsplash.com",
       },
+      {
+        hostname: "*.tokyodisneyresort.jp",
+      },
     ],
   },
 };

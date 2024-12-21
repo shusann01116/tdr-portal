@@ -1,9 +1,10 @@
-import type { Facility } from "@/lib/tdr/facility";
-import type { API_Facility, API_Greetings } from "@/lib/tdrofficial/types";
+import type { API_Facility, API_Greetings } from "@/features/official/types";
+import type { Facility } from "@/features/tdr/facility";
+import { RAW_FACILITY_DATA } from "../tdr/const/raw/facility";
 import { getLink } from "../tdr/link";
 import type { ParkType } from "../tdr/park";
 
-export async function getStandbys(park: ParkType): Promise<Facility[]> {
+export async function getFacilities(park: ParkType): Promise<Facility[]> {
   const [attractions, greetings] = await Promise.all([
     getAttractions(park),
     getGreetings(park),
@@ -89,6 +90,14 @@ export function toFacilityFromAttraction(f: API_Facility): Facility {
           : 0,
     },
     updatedAt: new Date(f.UpdateTime),
+    facilityImage: {
+      main: {
+        url:
+          RAW_FACILITY_DATA.find((facility) => facility.str_id === f.FacilityID)
+            ?.thum_name ?? "",
+        alt: `${f.FacilityName}のメイン画像`,
+      },
+    },
   };
 }
 
@@ -121,5 +130,14 @@ export function toFacilityFromGreeting(f: API_Facility): Facility | undefined {
           : 0,
     },
     updatedAt: new Date(greeting.UpdateTime),
+    facilityImage: {
+      main: {
+        url:
+          RAW_FACILITY_DATA.find(
+            (facility) => facility.str_id === greeting.FacilityID,
+          )?.thum_name ?? "",
+        alt: `${greeting.FacilityName}のメイン画像`,
+      },
+    },
   };
 }

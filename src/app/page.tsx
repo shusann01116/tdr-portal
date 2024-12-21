@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import StandbyByArea from "./components/standby-by-area";
+import StandbyByArea from "../features/standby/components/standby-by-area";
 
 export default function Page() {
   return (

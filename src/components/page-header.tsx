@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utils";
 import { Poiret_One } from "next/font/google";
 import Link from "next/link";
 

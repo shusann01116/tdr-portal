@@ -61,6 +61,12 @@ describe("toFacilityRespFromAttraction", () => {
       },
       standbyTime: { dateTime: new Date("2023-10-01T12:00:00Z"), time: 30 },
       updatedAt: new Date("2023-10-01T12:00:00Z"),
+      facilityImage: {
+        main: {
+          url: "",
+          alt: "Test Attractionのメイン画像",
+        },
+      },
     };
 
     const result = toFacilityFromAttraction(facility);
@@ -138,6 +144,12 @@ describe("toFacilityRespFromGreeting", () => {
       },
       standbyTime: { dateTime: new Date("2023-10-01T13:00:00Z"), time: 15 },
       updatedAt: new Date("2023-10-01T13:00:00Z"),
+      facilityImage: {
+        main: {
+          url: "",
+          alt: "Test Greetingのメイン画像",
+        },
+      },
     };
 
     const result = toFacilityFromGreeting(facility);

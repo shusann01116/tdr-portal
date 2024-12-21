@@ -1,4 +1,5 @@
-import type { API_Facility } from "../tdrofficial/types";
+import type { API_Facility } from "../official/types";
+import { AREA_LIST } from "./const";
 import type { Facility } from "./facility";
 
 export interface Area {
@@ -38,26 +39,8 @@ const facilityIdAreaMap: Record<Area["AreaID"], API_Facility["FacilityID"][]> =
     "15": ["224"], // ミステリアスアイランド
   };
 
-export const areaList: Area[] = [
-  { AreaID: "1", AreaName: "ワールドバザール" },
-  { AreaID: "2", AreaName: "アドベンチャーランド" },
-  { AreaID: "3", AreaName: "ウエスタンランド" },
-  { AreaID: "4", AreaName: "クリッターカントリー" },
-  { AreaID: "5", AreaName: "ファンタジーランド" },
-  { AreaID: "6", AreaName: "トゥーンタウン" },
-  { AreaID: "7", AreaName: "トゥモローランド" },
-  { AreaID: "8", AreaName: "メディテレーニアンハーバー" },
-  { AreaID: "9", AreaName: "アメリカンウォーターフロント" },
-  { AreaID: "10", AreaName: "ポートディスカバリー" },
-  { AreaID: "11", AreaName: "ロストリバーデルタ" },
-  { AreaID: "12", AreaName: "ファンタジースプリングス" },
-  { AreaID: "13", AreaName: "アラビアンコースト" },
-  { AreaID: "14", AreaName: "マーメイドラグーン" },
-  { AreaID: "15", AreaName: "ミステリアスアイランド" },
-] as const;
-
 export const getAreaByFacilityId = (facilityId: string) => {
-  return areaList.find((area) =>
+  return AREA_LIST.find((area) =>
     facilityIdAreaMap[area.AreaID].includes(facilityId),
   );
 };
