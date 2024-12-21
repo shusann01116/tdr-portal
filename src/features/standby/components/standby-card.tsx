@@ -2,7 +2,7 @@
 
 import { useFavorite } from "@/features/standby/hooks/favorite";
 import type { Facility } from "@/features/tdr/facility";
-import { cn } from "@/libs/utils";
+import { cn } from "@/lib/utils";
 import { Clock, Star } from "lucide-react";
 import Image from "next/image";
 import { Badge, badgeVariants } from "../../../components/ui/badge";
