@@ -2,6 +2,8 @@ import { ParkType } from "@/features/tdr/park";
 import { Suspense } from "react";
 import StandbyByArea from "../features/standby/components/standby-by-area";
 
+export const revalidate = 300;
+
 export default function Page() {
   return (
     <>
