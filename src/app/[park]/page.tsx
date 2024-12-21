@@ -2,6 +2,7 @@ import StandbyByArea from "@/features/standby/components/standby-by-area";
 import { toParkType } from "@/features/tdr/park";
 import { Suspense } from "react";
 
+export const revalidate = 300;
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
