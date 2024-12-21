@@ -21,7 +21,7 @@ export default function PageSelectDrawer() {
       <DrawerTrigger asChild>
         <Button
           variant="default"
-          className="fixed right-0 bottom-0 z-50 m-4 h-12 w-12 rounded-full"
+          className="fixed right-0 bottom-0 z-50 m-4 h-12 w-12 rounded-full drop-shadow-lg"
         >
           <Menu />
         </Button>
