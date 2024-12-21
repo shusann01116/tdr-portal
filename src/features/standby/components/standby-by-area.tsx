@@ -27,10 +27,10 @@ const _StandbyByArea = async ({
   const facilitiesByGroup = groupByArea(facilities);
 
   return (
-    <div className="gap-y-6">
+    <div className="space-y-6">
       {Object.entries(facilitiesByGroup).map(([areaId, facilities]) => (
         <div key={areaId} className="w-full px-2">
-          <h2 className="sticky top-0 z-20 bg-gradient-to-t from-transparent to-background/50 py-4 font-bold text-secondary-foreground text-xl lg:text-2xl">
+          <h2 className="sticky top-0 z-20 bg-gradient-to-t from-background/0 to-background/90 py-4 font-bold text-secondary-foreground text-xl lg:text-2xl">
             {AREA_LIST.find((area) => area.AreaID === areaId)?.AreaName ??
               "その他"}
           </h2>
