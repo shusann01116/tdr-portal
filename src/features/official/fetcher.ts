@@ -4,13 +4,24 @@ import { unstable_cache } from "next/cache";
 import { RAW_FACILITY_DATA } from "../tdr/const/raw/facility";
 import { getLink } from "../tdr/link";
 import type { ParkType } from "../tdr/park";
+import { getFacilities as getFacilitiesMock } from "./fetcher.mock";
 
 export async function getFacilities(park: ParkType): Promise<Facility[]> {
+  if (
+    process.env.MOCK_FACILITIES === "true" &&
+    process.env.NODE_ENV === "development"
+  ) {
+    return getFacilitiesMock(park);
+  }
+
+  return getFacilitiesInner(park);
+}
+
+async function getFacilitiesInner(park: ParkType): Promise<Facility[]> {
   const [attractions, greetings] = await Promise.all([
     getCachedAttractions(park),
     getCachedGreetings(park),
   ]);
-
   return [...attractions, ...greetings];
 }
 
@@ -88,6 +99,10 @@ async function getData(url: string) {
 }
 
 export function toFacilityFromAttraction(f: API_Facility): Facility {
+  const rawFacility = RAW_FACILITY_DATA.find(
+    (facility) => facility.str_id === f.FacilityID,
+  );
+
   return {
     id: f.FacilityID,
     name: f.FacilityName,
@@ -107,11 +122,10 @@ export function toFacilityFromAttraction(f: API_Facility): Facility {
           : 0,
     },
     updatedAt: new Date(f.UpdateTime),
+    facilityDescription: rawFacility?.important_text,
     facilityImage: {
       main: {
-        url:
-          RAW_FACILITY_DATA.find((facility) => facility.str_id === f.FacilityID)
-            ?.thum_name ?? "",
+        url: rawFacility?.thum_name ?? "",
         alt: `${f.FacilityName}のメイン画像`,
       },
     },
