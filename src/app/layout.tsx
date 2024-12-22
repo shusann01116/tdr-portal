@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_JP } from "next/font/google";
 import "@/app/globals.css";
 import PageHeader from "@/components/page-header";
 import PageSelectDrawer from "@/components/page-select-drawler";
@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
+const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "東京ディズニーリゾートポータル",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className)}>
+      <body className={cn(notoSansJP.className, inter.className)}>
         <PageHeader />
         <PageSelectDrawer />
         <main className="mx-auto flex max-w-screen-lg flex-col items-center justify-center py-4">
