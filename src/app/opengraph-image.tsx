@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const contentType = "image/png";
@@ -9,10 +11,9 @@ export const size = {
 };
 
 export default async function Image() {
-  const notosansJP = fetch(
-    new URL("./NotoSansJP-Regular.ttf", import.meta.url),
-  ).then((res) => res.arrayBuffer());
-
+  const notoSansJP = await readFile(
+    join(process.cwd(), "src", "styles", "NotoSansJP-Regular.ttf"),
+  );
   return new ImageResponse(
     <div
       style={{
@@ -45,8 +46,8 @@ export default async function Image() {
       ...size,
       fonts: [
         {
-          name: "NotoSansJP-Regular",
-          data: await notosansJP,
+          name: "NotoSansJP",
+          data: notoSansJP,
           style: "normal",
           weight: 400,
         },
