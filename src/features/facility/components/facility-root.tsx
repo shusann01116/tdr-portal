@@ -17,6 +17,7 @@ export default function FacilityRoot({
           width={390}
           height={219}
           className="h-full w-full object-cover"
+          priority
         />
         <section className="flex flex-col gap-2 px-2 md:px-0">
           <h1 className="font-bold text-2xl">{facility.name}</h1>
