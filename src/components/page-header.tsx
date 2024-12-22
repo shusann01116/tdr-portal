@@ -10,7 +10,7 @@ const poiret = Poiret_One({
 
 export default function PageHeader() {
   return (
-    <header className="flex justify-center bg-background/50 px-4 py-2 backdrop-blur-lg">
+    <header className="flex justify-center bg-background/50 px-2 py-2 backdrop-blur-lg">
       <span className="w-full max-w-screen-lg">
         <Link
           href="/"

@@ -4,7 +4,7 @@ import { ParkType } from "../tdr/park";
 import { toFacilityFromAttraction } from "./fetcher";
 import type { API_Facility } from "./types";
 
-export async function getStandbys(park: ParkType): Promise<Facility[]> {
+export async function getFacilities(park: ParkType): Promise<Facility[]> {
   const [attractions, greetings] = await Promise.all([
     getAttractions(park),
     getGreetings(park),

@@ -1,3 +1,6 @@
+import { getFacilities } from "@/features/official/fetcher";
+import { ParkType } from "@/features/tdr/park";
+
 export type FacilityId = string;
 
 export type Facility = {
@@ -7,6 +10,7 @@ export type Facility = {
   operatingHour: OperatingHour;
   standbyTime: StandbyTime;
   updatedAt: Date;
+  facilityDescription?: string;
   facilityImage?: FacilityImage;
 };
 
@@ -32,4 +36,18 @@ type Image = {
 
 export type FacilityImage = {
   main: Image;
+};
+
+export const getFacilityById = async (id: string) => {
+  const [tdl, tds] = await Promise.all([
+    getFacilities(ParkType.ParkTypeTDL),
+    getFacilities(ParkType.ParkTypeTDS),
+  ]);
+
+  const facility = [...tdl, ...tds].find((facility) => facility.id === id);
+  if (facility) {
+    return facility;
+  }
+
+  return null;
 };

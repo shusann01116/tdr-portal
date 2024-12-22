@@ -12,9 +12,10 @@ import { Card } from "../../../components/ui/card";
 type StandbyCardProps = {
   facility: Facility;
   size: "sm" | "lg";
+  priority?: boolean;
 };
 
-export const StandbyCard = ({ facility, size }: StandbyCardProps) => {
+export const StandbyCard = ({ facility, size, priority }: StandbyCardProps) => {
   const { isFavorite, toggleFavorite } = useFavorite(facility.id);
 
   if (size === "sm") {
@@ -23,6 +24,7 @@ export const StandbyCard = ({ facility, size }: StandbyCardProps) => {
         facility={facility}
         onFavorite={toggleFavorite}
         isFavorite={isFavorite}
+        priority={priority}
       />
     );
   }
@@ -34,10 +36,12 @@ const SmallStandbyCard = ({
   facility,
   isFavorite,
   onFavorite,
+  priority,
 }: {
   facility: Facility;
   isFavorite: boolean;
   onFavorite: (facilityId: string) => void;
+  priority?: boolean;
 }) => {
   const DEFAULT_IMAGE = {
     url: "https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80",
@@ -51,6 +55,8 @@ const SmallStandbyCard = ({
           src={facility.facilityImage?.main.url || DEFAULT_IMAGE.url}
           alt={facility.facilityImage?.main.alt || DEFAULT_IMAGE.alt}
           fill
+          sizes="(max-width: 768px) 80vw, 50vw"
+          priority={priority}
           className="rounded-md rounded-r-none object-cover"
         />
       </div>
